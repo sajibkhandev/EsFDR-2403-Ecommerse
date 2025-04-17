@@ -1,1 +1,8 @@
 @import "tailwindcss";
+
+@theme {
+    --container-container: 1600px; 
+    --spacing-margingmake: 100px; 
+    --color-sajib: #243c5a; 
+    --color-white: #fff; 
+  }
