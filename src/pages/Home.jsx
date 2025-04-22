@@ -1,13 +1,14 @@
 import React from 'react'
-import Container from '../components/Container'
-import Flex from '../components/Flex'
-import Image from '../components/Image'
-import Cart from '../assets/cart.jpg'
+import Navber from '../layouts/Navber'
+import Sideber from '../layouts/Sideber'
+
 
 const Home = () => {
   return (
     <div>
-       <h1 className='bg-sajib text-white'>thi si ssajib khan</h1>
+      <Navber/>
+      <Sideber/>
+       
     </div>
   )
 }
