@@ -4,6 +4,8 @@ import Flex from '../components/Flex'
 import List from '../components/List'
 import Image from '../components/Image'
 import FooterLogo from '../assets/footerLogo.png'
+import { FaFacebookF, FaLinkedinIn } from 'react-icons/fa'
+import { LuInstagram } from 'react-icons/lu'
 
 const Footer = () => {
   return (
@@ -14,10 +16,7 @@ const Footer = () => {
                 <h6 className='text-base text-secondary font-dm font-bold pb-4'>MENU</h6>
                 <ul className='flex flex-col gap-y-[6px]'>
                     <List text="Home"/>
-                    <List text="Shop"/>
-                    <List text="About"/>
-                    <List text="Contact"/>
-                    <List text="Journal"/>
+                   
                 </ul>
                 
                 </div>
@@ -49,6 +48,17 @@ const Footer = () => {
                 </div>
                 <div className='w-3/8'>
                   <Image  src={FooterLogo}/>
+                </div>
+            </Flex>
+            <Flex className='justify-between py-16'>
+                <Flex className='gap-x-6'>
+                <FaFacebookF />
+
+                <FaLinkedinIn />
+                <LuInstagram />
+                </Flex>
+                <div>
+                    <p className='text-sm text-[#6D6D6D] font-dm font-normal'>2020 Orebi Minimal eCommerce Figma Template by Adveits</p>
                 </div>
             </Flex>
         </Container>
