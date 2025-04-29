@@ -37,6 +37,15 @@ const Home = () => {
     <Container>
        <Image className='mb-[128px]' src={pomotion}/>
     </Container>
+    <Container>
+      <SubHeading className="pb-10 mt-[118px]" text='Special Offers'/>
+      <Flex className='justify-between mb-[130px]'>
+            <Cart src={Product2} price='30$' title="Product One"/>
+            <Cart src={Product} price='20$' title="Product Two"/>
+            <Cart src={Product2} price='50$' title="Product Three"/>
+            <Cart src={Product} price='20$' title="Product Four"/>
+      </Flex>
+    </Container>
     </>
     
     
