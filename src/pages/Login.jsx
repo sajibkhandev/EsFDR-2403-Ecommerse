@@ -35,12 +35,6 @@ const Login = () => {
            <Button  text="Continue"/>
 
 
-
-
-
-
-
-
         </Container>
     </section>
   )
