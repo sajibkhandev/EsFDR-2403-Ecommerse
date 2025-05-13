@@ -10,19 +10,54 @@ import Product from '../assets/product.png'
 import Product2 from '../assets/product2.png'
 import pomotion from '../assets/pomotion.png'
 
+
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import NextArrow from '../components/NextArrow'
+import PrevArrow from '../components/PrevArrow'
+
+
 const Home = () => {
+   var settings = {
+    arrows:true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    nextArrow:<NextArrow/>,
+    prevArrow:<PrevArrow/>
+  };
+
+
   return (
     <>
     <Banner/>
     <Add/>
     <Container>
       <SubHeading className="pb-10" text='New Arrivals'/>
-      <Flex className='justify-between'>
-            <Cart src={Product} price='30$' title="Product One"/>
-            <Cart src={Product2} price='20$' title="Product Two"/>
-            <Cart src={Product} price='50$' title="Product Three"/>
-            <Cart src={Product2} price='20$' title="Product Four"/>
-      </Flex>
+              <Slider {...settings}>
+
+                <div>
+                  <Cart src={Product2} price='30$' title="Product One"/>
+                </div>
+                <div>
+                  <Cart src={Product} price='30$' title="Product One"/>
+                </div>
+                <div>
+                  <Cart src={Product2} price='30$' title="Product One"/>
+                </div>
+                <div>
+                  <Cart src={Product} price='30$' title="Product One"/>
+                </div>
+                <div>
+                  <Cart src={Product2} price='30$' title="Product One"/>
+                </div>
+                <div>
+                  <Cart src={Product} price='30$' title="Product One"/>
+                </div>
+              
+            </Slider>
+     
     </Container>
 
     <Container>
