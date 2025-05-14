@@ -7,11 +7,34 @@ import Two from '../assets/two.png'
 import Car from '../assets/car.png'
 import Refres from '../assets/refres.png'
 import { Link } from 'react-router-dom'
+import Slider from 'react-slick'
+import "slick-carousel/slick/slick.css";
 
 const Banner = () => {
+ var settings = {
+    
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
   return (
     <section className='border-b border-[#F0F0F0]'>
-       <Link to='/contact'><Image className='w-full' src={BannerOne}/></Link>
+       <Slider {...settings}>
+      <div>
+        <Link to='/contact'><Image className='w-full' src={BannerOne}/></Link>
+      </div>
+      <div>
+        <Link to='/contact'><Image className='w-full' src={BannerOne}/></Link>
+      </div>
+      <div>
+        <Link to='/contact'><Image className='w-full' src={BannerOne}/></Link>
+      </div>
+      <div>
+        <Link to='/contact'><Image className='w-full' src={BannerOne}/></Link>
+      </div>
+      
+    </Slider>
        <Container>
        <Flex className='justify-between'>
           <Flex className='items-center gap-x-4 py-[30px]'>
