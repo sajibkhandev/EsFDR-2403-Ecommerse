@@ -12,7 +12,6 @@ import "slick-carousel/slick/slick.css";
 
 const Banner = () => {
  var settings = {
-    
     infinite: true,
     speed: 500,
     slidesToShow: 1,
