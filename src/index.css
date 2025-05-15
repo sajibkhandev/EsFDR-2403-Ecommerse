@@ -10,3 +10,21 @@
     --font-dm:"DM Sans", sans-serif;
     --text-f39: 39px; 
   }
+
+  .slick-dots{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 150px;
+  }
+  .slick-dots ul li div{
+    color: transparent;
+    font-size: 18px;
+    border-right: 2px solid white;
+    padding-right: 10px;
+    margin-bottom: 10px;
+  }
+  .slick-dots ul .slick-active div{
+    border-right: 2px solid black;
+    color: black;
+  }

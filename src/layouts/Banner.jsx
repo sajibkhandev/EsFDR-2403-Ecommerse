@@ -11,12 +11,28 @@ import Slider from 'react-slick'
 import "slick-carousel/slick/slick.css";
 
 const Banner = () => {
- var settings = {
+
+  const settings = {
+    dots: true,
+    arrows:false,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    appendDots: dots => (
+      <div >
+        <ul> {dots} </ul>
+      </div>
+    ),
+    customPaging: i => (
+      <div 
+        
+      >
+       0{i + 1}
+      </div>
+    )
   };
+
   return (
     <section className='border-b border-[#F0F0F0]'>
        <Slider {...settings}>
