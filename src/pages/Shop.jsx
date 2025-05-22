@@ -1,20 +1,26 @@
 import React, { useState } from 'react'
 import Container from '../components/Container'
-import { useDispatch, useSelector } from 'react-redux'
-import { decrement, increment } from '../slices/counterSlice'
+import SubHeading from '../components/SubHeading'
+import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 
 const Shop = () => {
+   let data2=useSelector((state)=>state.active.prvevalue)
 
-  let dispatch=useDispatch()
-  let data=useSelector((state)=>state.counter.value)
+
+
+  
  
   return (
-   <Container>
-   <button onClick={()=>dispatch(increment(1))}>Increment</button>
-   <button onClick={()=>dispatch(decrement(1))}>Decrement</button>
-   <h1>{data}</h1>
+  <section className='py-[126px]'>
+     <Container>
+    <SubHeading text="Shop"/>
+      <p> <Link to={data2=="Home"?"/":`/${data2}`}>{data2}</Link> >  shop</p>
+  
+   
    </Container>
+  </section>
   )
 }
 

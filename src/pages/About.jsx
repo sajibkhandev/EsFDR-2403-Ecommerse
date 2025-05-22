@@ -5,24 +5,24 @@ import Image from '../components/Image'
 import Button from '../components/Button'
 import ProductOne from '../assets/product.png'
 import AboutCart from '../components/AboutCart'
-import { useDispatch, useSelector } from 'react-redux'
-import { decrement, increment } from '../slices/counterSlice'
+import SubHeading from '../components/SubHeading'
+import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 const About = () => {
-   let dispatch=useDispatch()
-   let data =useSelector((state)=>(state.counter.value))
+   let data=useSelector((state)=>state.active.prvevalue)
+   let dat2=useSelector((state)=>state.active.daybefore)
+   
+   
+ 
   
   return (
-   <section className='py-[140px]'>
+   <section className='py-[112px]'>
     <Container>
+      <SubHeading text="About"/>
+      <p> <Link to={data=="Home"?"/":`/${data}`}>{data}</Link> >  about</p>
 
-   <button onClick={()=>dispatch(increment(1))}>Increment</button>
-   <button onClick={()=>dispatch(decrement(1))}>Decrement</button>
-   <h1>{data}</h1>
-
-
-
-       <Flex className='justify-between pb-[128px]'>
+       <Flex className='justify-between pb-[128px] pt-[136px]'>
             <div className='w-[49%] relative'>
               <Image className='w-full' src={ProductOne}/>
                  <Button className='absolute bottom-10 left-1/2 -translate-x-1/2'text="Our Brands"/>

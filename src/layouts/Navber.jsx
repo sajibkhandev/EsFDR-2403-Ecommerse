@@ -5,8 +5,16 @@ import Image from '../components/Image'
 import Logo from '../assets/logo.png'
 import List from '../components/List'
 import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { activebutton } from '../slices/breadcrumb'
 
 const Navber = () => {
+   let dispatch=useDispatch()
+
+  let handleClick=(name)=>{
+    dispatch(activebutton(name))
+    
+  }
   return (
     <nav className='py-8'>
         <Container>
@@ -16,11 +24,11 @@ const Navber = () => {
                     </div>
                     <div className='w-7/12 '>
                             <ul className='flex gap-x-10'>
-                              <Link to='/'>  <List text="Home"/></Link>
-                              <Link to='/shop'>   <List text="Shop"/></Link>
-                              <Link to='/about'>   <List text="About"/></Link>
-                              <Link to='/contact'>  <List text="Contacts"/></Link>
-                              <Link to=''>  <List text="Journal"/></Link>
+                              <Link onClick={()=>handleClick("Home")} to='/'>  <List text="Home"/></Link>
+                              <Link onClick={()=>handleClick("Shop")} to='/shop'>   <List text="Shop"/></Link>
+                              <Link onClick={()=>handleClick("About")} to='/about'>   <List text="About"/></Link>
+                              <Link onClick={()=>handleClick("Contact")} to='/contact'>  <List text="Contacts"/></Link>
+                              <Link onClick={()=>handleClick("Journal")} to=''>  <List text="Journal"/></Link>
                                 
                             </ul>
                          
