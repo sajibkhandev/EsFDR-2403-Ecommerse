@@ -1,25 +1,21 @@
 import React, { useState } from 'react'
 import Container from '../components/Container'
-import SubHeading from '../components/SubHeading'
-import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux'
-
+import Flex from '../components/Flex'
+import Pagination from '../components/Pagination'
 
 const Shop = () => {
-   let data2=useSelector((state)=>state.active.prvevalue)
-
-
-
-  
- 
   return (
   <section className='py-[126px]'>
-     <Container>
-    <SubHeading text="Shop"/>
-      <p> <Link to={data2=="Home"?"/":`/${data2}`}>{data2}</Link> >  shop</p>
-  
-   
+   <Container>
+      <Flex>
+         <div className='w-3/12'>Shop by Category</div>
+        <div className='w-9/12'> 
+          <Pagination itemsPerPage={12} />
+        </div>
+      </Flex>
+
    </Container>
+   
   </section>
   )
 }
