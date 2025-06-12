@@ -5,27 +5,84 @@ import Pagination from '../components/Pagination'
 import Image from '../components/Image'
 import Icon1 from '../assets/pageIcon1.png'
 import Icon2 from '../assets/pageIcon2.png'
+import Category from '../components/Category'
+import { FiPlus } from 'react-icons/fi'
+import { useSelector } from 'react-redux'
+import SubCategory from '../components/SubCategory'
+
 
 const Shop = () => {
   let [design,setDesign]=useState(true)
   let [store,setStore]=useState(12)
+  let category=useSelector((state)=>state.category.value)
   let handleDesign=()=>{
     setDesign(!design)
     
   }
-
   let handleChange=(e)=>{
     setStore(e.target.value);
-    
-
   }
-  console.log(store);
+
   
   return (
   <section className='py-[126px]'>
    <Container>
       <Flex>
-         <div className='w-3/12'>Shop by Category</div>
+         <div className='w-3/12 pr-10'>
+            <h5 className='text-xl text-secondary font-dm font-bold pb-[15px]'>Shop by Category</h5>
+
+           <Category text="Phone" type="true"/>
+                 {
+                  category &&  <>
+                  <SubCategory text="realme"/>
+                  <SubCategory text="sumsong"/>
+                  <SubCategory text="iphone"/>
+                  <SubCategory text="techno"/>
+                  <SubCategory text="vivo"/>
+                  </>
+                 }
+
+           <Category text="Desktop" type="false"/>
+                 {
+                  category &&  <>
+                  <SubCategory text="Asus"/>
+                  <SubCategory text="dell"/>
+                  <SubCategory text="lg"/>
+                  
+                  </>
+                 }
+           <Category text="Watch" type="true"/>
+                 {
+                  category &&  <>
+                  <SubCategory text="Asus"/>
+                  <SubCategory text="dell"/>
+                  <SubCategory text="lg"/>
+                  
+                  </>
+                 }
+           <Category text="Tablet" type="false"/>
+                 {
+                  category &&  <>
+                  <SubCategory text="Asus"/>
+                  <SubCategory text="dell"/>
+                  <SubCategory text="lg"/>
+                  
+                  </>
+                 }
+           <Category text="Leptop" type="true"/>
+                 {
+                  category &&  <>
+                  <SubCategory text="Asus"/>
+                  <SubCategory text="dell"/>
+                  <SubCategory text="lg"/>
+                  
+                  </>
+                 }
+          
+              
+           
+
+         </div>
         <div className='w-9/12'>
 
          <Flex className='justify-between pb-[60px]'>
