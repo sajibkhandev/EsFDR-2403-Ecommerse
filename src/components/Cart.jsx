@@ -4,8 +4,22 @@ import Flex from '../components/Flex'
 
 import { FaHeart, FaShoppingCart } from 'react-icons/fa'
 import { FaCodeCompare } from 'react-icons/fa6'
+import { useDispatch } from 'react-redux'
+import { addtocart } from '../slices/addtocartSlice'
 
 const Cart = ({price,src,title}) => {
+  let dispatch=useDispatch()
+
+  let handleAddToCart=()=>{
+    dispatch(addtocart({
+      title:title,
+      price:price,
+      image:src,
+      quantity:1
+    }))
+    
+    
+  }
   return (
     <div className='w-[370px] relative group '>
        <div className='relative overflow-hidden'>
@@ -17,7 +31,7 @@ const Cart = ({price,src,title}) => {
             <ul className='flex flex-col items-end py-6 px-8 gap-y-4 cursor-pointer'>
                 <li >Add to Wish List<FaHeart className='inline text-sm ml-4'/></li>
                 <li >Compare<FaCodeCompare className='inline text-sm ml-4'/></li>
-                <li >Add to Cart <FaShoppingCart className='inline text-sm ml-4'/></li>
+                <li onClick={handleAddToCart}>Add to Cart <FaShoppingCart className='inline text-sm ml-4'/></li>
             </ul>
         </div>
         <Flex className='justify-between items-center pt-6 pb-4'>

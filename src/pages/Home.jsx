@@ -41,19 +41,19 @@ const Home = () => {
                   <Cart src={Product2} price='30$' title="Product One"/>
                 </div>
                 <div>
-                  <Cart src={Product} price='30$' title="Product One"/>
+                  <Cart src={Product} price='10$' title="Product Two"/>
                 </div>
                 <div>
-                  <Cart src={Product2} price='30$' title="Product One"/>
+                  <Cart src={Product2} price='40$' title="Product Three"/>
                 </div>
                 <div>
-                  <Cart src={Product} price='30$' title="Product One"/>
+                  <Cart src={Product} price='30$' title="Product Four"/>
                 </div>
                 <div>
-                  <Cart src={Product2} price='30$' title="Product One"/>
+                  <Cart src={Product2} price='70$' title="Product Five"/>
                 </div>
                 <div>
-                  <Cart src={Product} price='30$' title="Product One"/>
+                  <Cart src={Product} price='30$' title="Product Six"/>
                 </div>
               
             </Slider>
