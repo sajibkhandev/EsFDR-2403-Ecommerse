@@ -85,7 +85,7 @@ const Cart = () => {
           </div>
         </div>
        
-       <div className='w-full flex justify-end my-15' ><Button text='Proceed to Checkout'/>  </div>
+       <div className='w-full flex justify-end my-15' ><Button text='Proceed to Checkout'/> card </div>
         
       </Container>
     
