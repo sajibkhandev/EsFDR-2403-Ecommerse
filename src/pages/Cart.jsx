@@ -6,7 +6,7 @@ import Image from '../Component/Image'
 import CardImage12 from '../assets/CardImage12.png'
 import { FaMinus, FaPlus } from 'react-icons/fa'
 import Button from '../Component/Button'
-import Flex from '../components/Flex'
+
 
 const Cart = () => {
   return (
