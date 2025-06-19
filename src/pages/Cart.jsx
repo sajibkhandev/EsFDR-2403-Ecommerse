@@ -1,11 +1,11 @@
 
-import Flex from '../Component/Flex'
-import Container from '../Component/Container'
+import Container from '../components/Container'
 import { RxCross2 } from 'react-icons/rx'
-import Image from '../Component/Image'
+import Image from '../components/Image'
 import CardImage12 from '../assets/CardImage12.png'
 import { FaMinus, FaPlus } from 'react-icons/fa'
-import Button from '../Component/Button'
+import Button from '../components/Button'
+import Flex from '../components/Flex'
 
 
 const Cart = () => {
@@ -85,7 +85,7 @@ const Cart = () => {
           </div>
         </div>
        
-       <div className='w-full flex justify-end my-15' ><Button text='Proceed to Checkout'/> card </div>
+       <div className='w-full flex justify-end my-15' ><Button text='Proceed to Checkout'/> </div>
         
       </Container>
     
