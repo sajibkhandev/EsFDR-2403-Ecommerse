@@ -36,7 +36,7 @@ const Cart = ({price,src,title}) => {
         </div>
         <Flex className='justify-between items-center pt-6 pb-4'>
             <h4 className='text-xl text-secondary font-dm font-bold'>{title}</h4>
-            <p className='text-base text-primary font-dm font-normal'>{price}</p>
+            <p className='text-base text-primary font-dm font-normal'>{price}$</p>
         </Flex>
         <p className='text-base text-primary font-dm font-normal'>Black</p>
 

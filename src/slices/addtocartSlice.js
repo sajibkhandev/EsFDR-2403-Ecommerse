@@ -19,9 +19,29 @@ export const addtocartSlice = createSlice({
        }
     
     },
+    increment:(state,action)=>{
+     state.cartItem.map(item=>{
+      if(item.title==action.payload.title){
+        item.quantity+=1
+      }
+     })
+      
+    },
+    decrement:(state,action)=>{
+
+     state.cartItem.map(item=>{
+      if(item.title==action.payload.title){
+       if(item.quantity>1){
+         item.quantity-=1
+       }
+      }
+     })
+      
+      
+    }
   },
 })
 
-export const { addtocart } = addtocartSlice.actions
+export const { addtocart,increment,decrement } = addtocartSlice.actions
 
 export default addtocartSlice.reducer
