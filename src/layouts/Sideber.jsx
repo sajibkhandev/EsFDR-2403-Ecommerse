@@ -1,16 +1,20 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Container from '../components/Container'
 import Flex from '../components/Flex'
 import Image from '../components/Image'
+import Button from '../components/Button'
 import SideberIcon from '../assets/sidebarIcon.png'
 import { IoSearchSharp } from 'react-icons/io5'
 import { FaShoppingCart, FaUser } from 'react-icons/fa'
 import { IoMdArrowDropdown } from 'react-icons/io'
 import { useDispatch, useSelector } from 'react-redux'
-import { decrement, increment } from '../slices/addtocartSlice'
+import { decrement, increment, removeitem } from '../slices/addtocartSlice'
+import { ImCross } from 'react-icons/im'
+import { Link } from 'react-router-dom'
 
 const Sideber = () => {
   let dispatch=useDispatch()
+  let [total,setTotal]=useState(0)
   let [showcart,setShowCart]=useState(false)
   let data=useSelector((state)=>state.addtocart.cartItem)
 
@@ -23,12 +27,23 @@ const Sideber = () => {
     dispatch(decrement(item))
     
   }
- 
-  
- 
-  
 
-  
+  let handleRemoveItem=(item)=>{
+    dispatch(removeitem(item))
+    
+  }
+  useEffect(()=>{
+    let total=0
+    data.map(item=>{
+     total+= item.price*item.quantity
+     
+    })
+    setTotal(total);
+    
+
+  },[data])
+
+
 
   return (
     <section className='bg-[#F5F5F3] py-6'>
@@ -55,8 +70,9 @@ const Sideber = () => {
 
                 {
                   showcart && <div className='w-1/3 h-screen bg-black absolute top-0 right-0 z-10'>
-                    <FaShoppingCart className='text-white' onClick={()=>setShowCart(!showcart)}/>
-                      <ul className='flex items-center justify-between px-5 py-3 bg-black text-white border border-white'>
+                    <ImCross className='text-white my-4 mx-6' onClick={()=>setShowCart(!showcart)}/>
+                      <ul className='flex items-center justify-between px-5 py-5 bg-black text-white text-xl font-semibold border border-white'>
+                        <li>Action:</li>
                         <li>Product:</li>
                         <li>Price:</li>
                         <li>Quantity:</li>
@@ -64,8 +80,14 @@ const Sideber = () => {
                       </ul>
                       
                         {
-                          data.map(item=>(
-                            <ul className='flex items-center justify-between px-5 py-3 bg-black text-white border border-white cursor-pointer'>
+                          data.length>0 
+                          ?
+                          
+                        <>
+                         {
+                           data.map(item=>(
+                            <ul className=' flex items-center justify-between px-5 py-3 bg-black text-white border border-white cursor-pointer'>
+                                <li onClick={()=>handleRemoveItem(item)}><ImCross className='text-xs ml-6'/></li>
                                 <li>{item.title}</li>
                                 <li>{item.price}$</li>
                                 <li className='border border-white py-2 px-8 flex gap-x-3'>
@@ -76,7 +98,19 @@ const Sideber = () => {
                                 <li>{item.price*item.quantity}</li>
                             </ul>
                           ))
+                         }
+                          <div className=" flex items-center mt-20 justify-center gap-x-4">
+                            <Link to='/cart'><Button className='bg-white !text-black hover:!text-white hover:!border-white' text="View Cart"/></Link>
+                            <Link to='/checkout'><Button className='bg-white !text-black hover:!text-white hover:!border-white' text="Checkout"/></Link>
+
+                          </div>
+                        </>
+                        
+                           :
+                           <h1 className='text-white text-2xl font-bold font-dm text-center pt-[200px]'>Cart is Empty</h1>
+
                         }
+                        <div className='absolute bottom-6 right-6 text-white text-2xl font-dm font-bold'>Total :{total}</div>
                      
                   </div> 
                    
