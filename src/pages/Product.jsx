@@ -1,34 +1,49 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Container from '../components/Container'
 import Image from '../components/Image'
 import Flex from '../components/Flex'
 import SubHeading from '../components/SubHeading'
-import ProductOne from '../assets/product.png'
-import ProductTwo from '../assets/product2.png'
+
 import { FaStar } from "react-icons/fa";
 import Button from '../components/Button'
+import { useParams } from 'react-router-dom'
+import axios from 'axios'
 
 
 const Product = () => {
+    let [alldata,setAllData]=useState([])
+    let [product,setProduct]=useState([])
+    let singleProduct=useParams()
+    
+    useEffect(()=>{
+      
+      async function allData(){
+        let data= await axios.get("https://dummyjson.com/products")
+        setAllData(data.data.products);
+      }
+      allData()
+      
+    },[])
+
+
+ 
+  
+  
   return (
     <section className='py-[150px]'>
       <Container>
-       <Flex className='flex-wrap justify-between gap-y-8'>
-          <div className='w-w49'>
-             <Image className='w-full' src={ProductOne}/>
-          </div>
-          <div className='w-w49'>
-             <Image className='w-full' src={ProductTwo}/>
-          </div>
-          <div className='w-w49'>
-             <Image className='w-full' src={ProductTwo}/>
-          </div>
-          <div className='w-w49'>
-             <Image className='w-full' src={ProductOne}/>
-          </div>
-           
-       </Flex>
+        {
+          alldata.map(item=>{
+          if(item.title==singleProduct.title){
 
+            return (
+              <>
+              <Image src={item.thumbnail}/>
+              </>
+            )
+          }
+    })
+        }
 
        <SubHeading className='pt-12 pb-4' text='Product'/>
 

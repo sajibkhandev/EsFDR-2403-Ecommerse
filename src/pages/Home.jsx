@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Banner from '../layouts/Banner'
 import Add from '../layouts/Add'
 import Container from '../components/Container'
@@ -15,18 +15,34 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import NextArrow from '../components/NextArrow'
 import PrevArrow from '../components/PrevArrow'
+import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 
 const Home = () => {
+
+  let [alldata,setAllData]=useState([])
+
    var settings = {
     arrows:true,
     infinite: true,
     speed: 500,
     slidesToShow: 4,
-    slidesToScroll: 1,
+    slidesToScroll: 4,
     nextArrow:<NextArrow/>,
     prevArrow:<PrevArrow/>
   };
+
+  useEffect(()=>{
+
+  async function allData(){
+      let data= await axios.get("https://dummyjson.com/products")
+      setAllData(data.data.products);
+    }
+
+    allData()
+
+  },[])
 
 
   return (
@@ -36,25 +52,16 @@ const Home = () => {
     <Container>
       <SubHeading className="pb-10" text='New Arrivals'/>
               <Slider {...settings}>
+                {
+                  alldata.map(item=>(
+                    
+                        <div>
+                          <Cart src={item.thumbnail} price={item.price} title={item.title}/>
+                        </div>
+                    
 
-                <div>
-                  <Cart src={Product2} price='30' title="Product One"/>
-                </div>
-                <div>
-                  <Cart src={Product} price='10' title="Product Two"/>
-                </div>
-                <div>
-                  <Cart src={Product2} price='40' title="Product Three"/>
-                </div>
-                <div>
-                  <Cart src={Product} price='30' title="Product Four"/>
-                </div>
-                <div>
-                  <Cart src={Product2} price='70' title="Product Five"/>
-                </div>
-                <div>
-                  <Cart src={Product} price='30' title="Product Six"/>
-                </div>
+                  ))
+                }
               
             </Slider>
      
@@ -62,56 +69,28 @@ const Home = () => {
 
     <Container>
       <SubHeading className="pb-10 mt-[118px]" text='Our Bestsellers'/>
-      <Slider {...settings}>
-
-                <div>
-                  <Cart src={Product2} price='30' title="Product One"/>
-                </div>
-                <div>
-                  <Cart src={Product} price='30' title="Product One"/>
-                </div>
-                <div>
-                  <Cart src={Product2} price='30' title="Product One"/>
-                </div>
-                <div>
-                  <Cart src={Product} price='30' title="Product One"/>
-                </div>
-                <div>
-                  <Cart src={Product2} price='30' title="Product One"/>
-                </div>
-                <div>
-                  <Cart src={Product} price='30' title="Product One"/>
-                </div>
-              
-            </Slider>
+     <Flex className='gap-x-[45px]'>
+      {
+        alldata.map((item,index)=>(
+          (index>4 && index<9) &&
+          <Cart src={item.thumbnail} price={item.price} title={item.title}/>
+        ))
+      }
+     </Flex>
     </Container>
     <Container>
        <Image className='mb-[128px]' src={pomotion}/>
     </Container>
     <Container>
       <SubHeading className="pb-10 mt-[118px]" text='Special Offers'/>
-      <Slider {...settings}>
-
-                <div>
-                  <Cart src={Product2} price='30' title="Product One"/>
-                </div>
-                <div>
-                  <Cart src={Product} price='30' title="Product One"/>
-                </div>
-                <div>
-                  <Cart src={Product2} price='30' title="Product One"/>
-                </div>
-                <div>
-                  <Cart src={Product} price='30' title="Product One"/>
-                </div>
-                <div>
-                  <Cart src={Product2} price='30' title="Product One"/>
-                </div>
-                <div>
-                  <Cart src={Product} price='30' title="Product One"/>
-                </div>
-              
-            </Slider>
+          <Flex className='gap-x-[45px]'>
+            {
+              alldata.map((item,index)=>(
+                (index>10 && index<15) &&
+                <Cart src={item.thumbnail} price={item.price} title={item.title}/>
+              ))
+            }
+         </Flex>
     </Container>
     </>
     

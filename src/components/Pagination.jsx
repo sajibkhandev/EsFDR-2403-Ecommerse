@@ -5,6 +5,8 @@ import Cart from '../components/Cart'
 import Product from '../assets/product.png'
 import Data from '../data.js'
 
+import axios from 'axios'
+
 
 
 
@@ -14,7 +16,7 @@ function Items({ currentItems }) {
       <div className='flex gap-x-[45px] flex-wrap'>
               {currentItems &&
               currentItems.map((item) => (
-              <Cart  src={item.image} price={item.id} title={item.title}/>
+              <Cart  src={item.thumbnail} price={item.id} title={item.title}/>
               ))}
       </div>
     </>
@@ -22,13 +24,33 @@ function Items({ currentItems }) {
 }
 
 function Pagination({ itemsPerPage }) {
+  let [alldata,setAllData]=useState([])
+
+    useEffect(()=>{
+
+  async function allData(){
+      let data= await axios.get("https://dummyjson.com/products")
+      setAllData(data.data.products);
+    }
+
+    allData()
+
+  },[])
+
+
+     
+
+
+
+
+
   const [itemOffset, setItemOffset] = useState(0);
   const endOffset = itemOffset + itemsPerPage;
   console.log(`Loading items from ${itemOffset} to ${endOffset}`);
-  const currentItems = Data.slice(itemOffset, endOffset);
-  const pageCount = Math.ceil(Data.length / itemsPerPage);
+  const currentItems = alldata.slice(itemOffset, endOffset);
+  const pageCount = Math.ceil(alldata.length / itemsPerPage);
   const handlePageClick = (event) => {
-    const newOffset = (event.selected * itemsPerPage) % Data.length;
+    const newOffset = (event.selected * itemsPerPage) % alldata.length;
     console.log(
       `User requested page number ${event.selected}, which is offset ${newOffset}`
     );

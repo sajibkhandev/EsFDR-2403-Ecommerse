@@ -88,7 +88,7 @@ const Sideber = () => {
                            data.map(item=>(
                             <ul className=' flex items-center justify-between px-5 py-3 bg-black text-white border border-white cursor-pointer'>
                                 <li onClick={()=>handleRemoveItem(item)}><ImCross className='text-xs ml-6'/></li>
-                                <li>{item.title}</li>
+                                <li>{item.title.substring(0,15)}....</li>
                                 <li>{item.price}$</li>
                                 <li className='border border-white py-2 px-8 flex gap-x-3'>
                                   <span onClick={()=>handleDecrement(item)}>-</span>
@@ -110,7 +110,7 @@ const Sideber = () => {
                            <h1 className='text-white text-2xl font-bold font-dm text-center pt-[200px]'>Cart is Empty</h1>
 
                         }
-                        <div className='absolute bottom-6 right-6 text-white text-2xl font-dm font-bold'>Total :{total}</div>
+                        <div className='absolute bottom-6 right-6 text-white text-2xl font-dm font-bold'>Total :{Math.round(total)}</div>
                      
                   </div> 
                    

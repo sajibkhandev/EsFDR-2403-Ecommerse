@@ -6,6 +6,7 @@ import { FaHeart, FaShoppingCart } from 'react-icons/fa'
 import { FaCodeCompare } from 'react-icons/fa6'
 import { useDispatch } from 'react-redux'
 import { addtocart } from '../slices/addtocartSlice'
+import { Link } from 'react-router-dom'
 
 const Cart = ({price,src,title}) => {
   let dispatch=useDispatch()
@@ -34,10 +35,12 @@ const Cart = ({price,src,title}) => {
                 <li onClick={handleAddToCart}>Add to Cart <FaShoppingCart className='inline text-sm ml-4'/></li>
             </ul>
         </div>
+        <Link to={`/product/${title}`}>
         <Flex className='justify-between items-center pt-6 pb-4'>
             <h4 className='text-xl text-secondary font-dm font-bold'>{title}</h4>
             <p className='text-base text-primary font-dm font-normal'>{price}$</p>
         </Flex>
+        </Link>
         <p className='text-base text-primary font-dm font-normal'>Black</p>
 
         <button className='py-2 px-8 bg-black text-white text-sm font-bold font-dm absolute top-5 left-5'>New</button>
