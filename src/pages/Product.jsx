@@ -8,12 +8,17 @@ import { FaStar } from "react-icons/fa";
 import Button from '../components/Button'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux'
+import { decrement, increment } from '../slices/addtocartSlice'
 
 
 const Product = () => {
+  let dispatch=useDispatch()
   let [alldata, setAllData] = useState([])
   let [product, setProduct] = useState([])
   let singleProduct = useParams()
+
+  let data=useSelector((state)=>state.addtocart.cartItem)
 
   useEffect(() => {
 
@@ -84,9 +89,15 @@ const Product = () => {
                   <Flex className='items-center gap-x-[37px] pt-8 border-b border-[#F0F0F0] w-w49 pb-[30px]'>
                     <h4 className='text-base text-secondary font-dm font-bold'>QUANTITY:</h4>
                     <div className='py-2 px-8 border border-[#F0F0F0] flex gap-x-5'>
-                      <span>+</span>
-                      <span>1</span>
-                      <span>-</span>
+                     {
+                      data.map(item=>(
+                        <>
+                         <span onClick={()=>dispatch(increment(item))}>+</span>
+                      <span>{item.quantity}</span>
+                      <span onClick={()=>dispatch(decrement(item))}>-</span>
+                        </>
+                      ))
+                     }
                     </div>
                   </Flex>
 
